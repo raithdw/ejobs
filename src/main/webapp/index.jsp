@@ -1,4 +1,23 @@
+<style>
+    body{
+        background-color:lightblue;
+    }
+    .edit{
+        color:darkgreen;
+        font-size: 20px;
+        text-align: left;
+        font-family: Tahoma;
+    }
+    .logout{
+        text-align: left;
+        font-family: Tahoma;
+        font-size: 20px;
 
+    }
+    .type{
+        text-align: center;
+    }
+</style>
 
 <%
 
@@ -14,11 +33,10 @@
 <body>
 
 <head>
-    <title>my admiin</title>
-
-    <link rel="stylesheet" href="css.css">
+    <title>Admin</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -27,19 +45,25 @@
 
 
 <div id="sendSomething"></div>
+<div class="type">
+    <div id="newtodo">
 
-        <div id ="newtodo">
-            <input type="text" id="title" name="title" placeholder="title job" />
-            <input type="text" id="description" name="description" placeholder="descr job" />
-            <input type="button" id="add" value="Trimite"  onClick="addNewToDo()"/>
-        </div>
+        <textarea rows="4" cols="50" name="title" id="title" placeholder="Enter Job Title..."></textarea>
+        <textarea rows="4" cols="50" name="description" id="description" placeholder="Enter Job Description..."></textarea>
+        <input type="button" id="add" value="Add"  onClick="addNewToDo()"/>
+    </div>
 
-        </br>
+    </br>
+</div>
 
+
+<div class="edit">
     <div id="listOfToDo">
-        aici o sa fie joburile mele adaugate
+        Aici se vor adauga job-urile
         <ul></ul>
     </div>
+</div>
+
 
 
 
@@ -58,6 +82,7 @@
             putToDoInHTML(response.myjobs);
         });
     }
+
     function putToDoInHTML(todo) {
 
         var list = document.getElementById('listOfToDo').getElementsByTagName('ul')[0];
@@ -65,15 +90,15 @@
 
         for (var i = 0; i < todo.length; i++) {
             var task = todo[i];
-            //var checked = task.done ? ' checked=""' : '';
+
             var taskHtml =
-                '<li>' +
-                '<input type="checkbox" value="' + task.id + '" onclick=markDone("' + task.id + '")>' +
-                task.title +
-                '</li>';
+                '<ul>'+ task.title +
+
+                '</ul>';
             listHtml += taskHtml;
         }
         list.innerHTML = listHtml;
+
 
     }
 
@@ -119,10 +144,12 @@
 
 
 
+<div class="logout">
+    <p>
+        <a href="logout">Logout</a>
+    </p>
+</div>
 
-<p>
-    <a href="logout">Logout</a>
-</p>
 
 
 </body>

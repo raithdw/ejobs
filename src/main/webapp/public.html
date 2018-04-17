@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+    body{
+        background-color: silver;
+        text-align: center;
+        font-size: larger;
+
+    }
+</style>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Public</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
@@ -37,9 +45,9 @@
         var listHtml = '';
         for (var i = 0; i < todo.length; i++) {
             var task = todo[i];
-            //var checked = task.done ? ' checked=""' : '';
+
             var taskHtml =
-                '<a href="details.jsp?title=' + task.title + '&description='+ task.description +'">'+task.title+'</a>'+'</br>'
+                '<a href="details.jsp?title=' + task.title + '&description='+ task.description + '">'+task.title+'</a>'+'</br>'
             listHtml += taskHtml;
         }
         list.innerHTML = listHtml;

@@ -45,7 +45,6 @@ public class JobsDBOper {
         pSt.setInt(1, iduser);
         ResultSet rs = pSt.executeQuery();
         while(rs.next()) {
-            System.out.println(":iterte");
             Job ir = new Job();
             ir.setId(rs.getInt("id"));
             ir.setTitle(rs.getString("title"));
