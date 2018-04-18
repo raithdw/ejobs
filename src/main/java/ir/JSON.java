@@ -16,6 +16,7 @@ import java.sql.SQLException;
 @WebServlet("/tl")
 public class JSON extends HttpServlet {
 
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
 
@@ -25,6 +26,9 @@ public class JSON extends HttpServlet {
             read(req, resp);
         else if (action != null && action.equals("write"))
             write(req, resp);
+        else if (action != null && action.equals("delete"))
+            delete(req, resp);
+
 
     }
 
@@ -80,6 +84,32 @@ public class JSON extends HttpServlet {
             }
         }
 
+    }
+    private void delete(HttpServletRequest req, HttpServletResponse resp) {
+
+        System.out.println("enter pe done");
+
+        HttpSession session = req.getSession(true);
+
+        String idS = req.getParameter("id");
+        int id = Integer.parseInt(idS);
+        try {
+            JobsDBOper.demoDelete(id);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            resp.sendRedirect("index.jsp");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        ToDoListDBAccess atl = new ToDoListDBAccess();
+//        atl.markDone(id);
+
+
+        System.out.println("i am done");
     }
 
     private void returnJsonResponse(HttpServletResponse response, String jsonResponse) {

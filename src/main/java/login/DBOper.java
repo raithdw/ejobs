@@ -22,6 +22,7 @@ public class DBOper {
             Statement st = conn.createStatement();
 
             // 5. execute a query, in a not  secured way
+
             String query = "SELECT id FROM users where username='"+user+"' and password='"+pwd+"'";
             System.out.println(query);
             ResultSet rs = st.executeQuery(query);
@@ -54,21 +55,24 @@ public class DBOper {
     public int register (String user, String pwd) {
 
         int found = -1;
+
         try {
+
             Class.forName("org.postgresql.Driver");
 
             // 3. obtain a connection
             Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            if (!user.equals("") && !pwd.equals("")) {
+                PreparedStatement pSt = conn.prepareStatement("INSERT INTO users (username,password) VALUES (?,?)");
+                pSt.setString(1, user);
+                pSt.setString(2, pwd);
 
-            PreparedStatement pSt = conn.prepareStatement("INSERT INTO users (username,password) VALUES (?,?)");
-            pSt.setString(1, user);
-            pSt.setString(2, pwd);
+                int rowsInserted = pSt.executeUpdate();
 
-            int rowsInserted = pSt.executeUpdate();
+                pSt.close();
 
-            pSt.close();
-
-            conn.close();
+                conn.close();
+            }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -79,6 +83,7 @@ public class DBOper {
 
 
     }
+
 
 
 

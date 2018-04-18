@@ -17,6 +17,7 @@
     .type{
         text-align: center;
     }
+
 </style>
 
 <%
@@ -59,8 +60,10 @@
 
 <div class="edit">
     <div id="listOfToDo">
-        Aici se vor adauga job-urile
-        <ul></ul>
+        Aici se vor adauga job-urile:
+        <ul>
+
+        </ul>
     </div>
 </div>
 
@@ -92,9 +95,8 @@
             var task = todo[i];
 
             var taskHtml =
-                '<ul>'+ task.title +
-
-                '</ul>';
+                '<ul>' + '<li>' + task.title + '</li>'+'</ul>'
+                + "<td> <a href='tl?action=delete&id="+task.id+"'>x</a></td>";
             listHtml += taskHtml;
         }
         list.innerHTML = listHtml;

@@ -91,6 +91,28 @@ public class JobsDBOper {
 
         return listofNames;
     }
+    public static void demoDelete(long id) throws ClassNotFoundException, SQLException {
+
+        // 1. load driver, no longer needed in new versions of JDBC
+        Class.forName("org.postgresql.Driver");
+
+
+
+        // 3. obtain a connection
+        Connection conn = DriverManager.getConnection(DBOper.URL, DBOper.USERNAME, DBOper.PASSWORD);
+
+        // 4. create a query statement
+        PreparedStatement pSt = conn.prepareStatement("DELETE FROM jobs WHERE id=?");
+        pSt.setLong(1,id);
+
+
+        // 5. execute a prepared statement
+        int rowsDeleted = pSt.executeUpdate();
+        System.out.println(rowsDeleted + " rows were deleted.");
+        // 6. close the objects
+        pSt.close();
+        conn.close();
+    }
 
 
 }
