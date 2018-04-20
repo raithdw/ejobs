@@ -1,22 +1,54 @@
 <style>
     body{
-        background-color:lightblue;
+        background-image: url("http://www.planwallpaper.com/static/images/6909249-black-hd-background.jpg");
+
     }
-    .edit{
-        color:darkgreen;
-        font-size: 20px;
-        text-align: left;
-        font-family: Tahoma;
+    img{
+        background-color: whitesmoke;
+        width: 20px;
+        position: relative;
+        bottom: 25px;
+
     }
+    h1{
+        color: wheat;
+        font-size: 40px;
+        font-weight: bold;
+        font-family:Georgia
+    }
+
     .logout{
-        text-align: left;
+
         font-family: Tahoma;
+        font-weight: bold;
+        text-align: right;
         font-size: 20px;
+
 
     }
     .type{
         text-align: center;
+
     }
+    textarea{
+        font-weight: bold;
+        font-size: larger;
+        background-color: beige;
+    }
+
+    ul{
+        color: white;
+        font-size: 30px;
+        text-align: left;
+
+    }
+
+    input{
+        position: relative;
+        bottom: 5px;
+        font-weight: bold;
+    }
+
 
 </style>
 
@@ -51,7 +83,7 @@
 
         <textarea rows="4" cols="50" name="title" id="title" placeholder="Enter Job Title..."></textarea>
         <textarea rows="4" cols="50" name="description" id="description" placeholder="Enter Job Description..."></textarea>
-        <input type="button" id="add" value="Add"  onClick="addNewToDo()"/>
+        <input type="button" id="add" value="Add Job"  onClick="addNewToDo()"/>
     </div>
 
     </br>
@@ -60,18 +92,14 @@
 
 <div class="edit">
     <div id="listOfToDo">
-        Aici se vor adauga job-urile:
+        <h1>Job-uri adaugate:</h1>
         <ul>
 
         </ul>
     </div>
 </div>
 
-
-
-
-    </br>
-
+</br>
 
 
 </body>
@@ -95,8 +123,8 @@
             var task = todo[i];
 
             var taskHtml =
-                '<ul>' + '<li>' + task.title + '</li>'+'</ul>'
-                + "<td> <a href='tl?action=delete&id="+task.id+"'>x</a></td>";
+                '<ul>'+ task.title +'</ul>'
+                + "<td><a href='tl?action=delete&id="+task.id+"'style=\"color: white\"><img src=https://cdn3.iconfinder.com/data/icons/line/36/trash_can-512.png title=delete></a></td>";
             listHtml += taskHtml;
         }
         list.innerHTML = listHtml;
@@ -108,7 +136,7 @@
 
 
 
-    function addNewToDo() {          //trimitem date
+    function addNewToDo() {          //trimitem data_add
         var title = document.getElementById('title').value;
         var description = document.getElementById('description').value;
 
@@ -142,14 +170,8 @@
     }
 </script>
 
-
-
-
-
 <div class="logout">
-    <p>
-        <a href="logout">Logout</a>
-    </p>
+    <a href="logout"style="color: white">Logout</a>
 </div>
 
 

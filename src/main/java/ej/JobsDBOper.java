@@ -1,9 +1,10 @@
-package ir;
+package ej;
 
 import login.DBOper;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -29,6 +30,7 @@ public class JobsDBOper {
             pSt.close();
             conn.close();
         }
+
     }
 
     public List getMyJobs(int iduser) throws ClassNotFoundException, SQLException{
@@ -45,11 +47,11 @@ public class JobsDBOper {
         pSt.setInt(1, iduser);
         ResultSet rs = pSt.executeQuery();
         while(rs.next()) {
-            Job ir = new Job();
-            ir.setId(rs.getInt("id"));
-            ir.setTitle(rs.getString("title"));
-            ir.setDescription(rs.getString("description"));
-            listofNames.add(ir);
+            Job ej = new Job();
+            ej.setId(rs.getInt("id"));
+            ej.setTitle(rs.getString("title"));
+            ej.setDescription(rs.getString("description"));
+            listofNames.add(ej);
         }
 
         pSt.close();
@@ -79,11 +81,11 @@ public class JobsDBOper {
         //PreparedStatement pSt = conn.prepareStatement("SELECT * FROM jobs  order by data_add desc");
         ResultSet rs = s.executeQuery(query);
         while(rs.next()) {
-            Job ir = new Job();
-            ir.setId(rs.getInt("id"));
-            ir.setTitle(rs.getString("title"));
-            ir.setDescription(rs.getString("description"));
-            listofNames.add(ir);
+            Job ej = new Job();
+            ej.setId(rs.getInt("id"));
+            ej.setTitle(rs.getString("title"));
+            ej.setDescription(rs.getString("description"));
+            listofNames.add(ej);
         }
 
         s.close();

@@ -1,4 +1,4 @@
-package ir;
+package ej;
 
 public class Job {
 
@@ -29,11 +29,10 @@ public class Job {
         this.description = description;
     }
 
+
     private long id;
     private String title;
     private String description;
-
-
 
 
 }

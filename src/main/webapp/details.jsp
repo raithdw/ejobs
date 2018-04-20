@@ -9,17 +9,27 @@
 <html>
 <style>
     body{
-        background-color:#92a8d1;
+        background-image: url("http://www.wallpapers4u.org/wp-content/uploads/stains_light_background_texture_50519_1920x1080.jpg");
+        margin-top: inherit;
     }
     .descrip{
-        font-size: 20px;
-        font-family: Verdana;
-        color: darkred;
+        font-size: 30px;
+        font-family: sans-serif;
+        color: #3D0C02;
     }
     .title{
-        font-size: 30px;
+        font-size: 50px;
         font-family: Cambria;
         text-align: center;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px #000000;
+        color: mediumpurple;
+    }
+    h1{
+        font-size: 40px;
+        font-family: Cambria;
+        text-shadow: 2px 2px 4px #000000;
+        color: mediumpurple;
         font-weight: bold;
     }
 
@@ -37,11 +47,11 @@
 </div>
 <br>
 <br>
+    <h1>
+        Job Description:
+    </h1>
+
 <div class="descrip">
-    <p>
-    Job Description:
-        <br>
-        <br>
     <%=request.getParameter("description")%>
 </div>
 

@@ -1,4 +1,4 @@
-package ir;
+package ej;
 
 import org.json.JSONObject;
 
@@ -60,9 +60,10 @@ public class JSON extends HttpServlet {
 
         String title = req.getParameter("title");
         String description = req.getParameter("description");
-        Job ir = new Job();
-        ir.setTitle(title);
-        ir.setDescription(description);
+        Job ej = new Job();
+        ej.setTitle(title);
+        ej.setDescription(description);
+
 
         int fkuser=-1;
 
@@ -76,7 +77,7 @@ public class JSON extends HttpServlet {
 
             JobsDBOper listOfNames = new JobsDBOper();
             try {
-                listOfNames.addJobs(ir, fkuser);
+                listOfNames.addJobs(ej, fkuser);
             } catch (ClassNotFoundException e) {
 
             } catch (SQLException e) {
