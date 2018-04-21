@@ -4,13 +4,12 @@ import login.DBOper;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 
 public class JobsDBOper {
 
-    private List<Job> listofNames = new ArrayList<>();
+    private List<Job> listofJobs = new ArrayList<>();
 
     public void addJobs(Job s, int fkuser) throws ClassNotFoundException, SQLException {
 
@@ -24,6 +23,7 @@ public class JobsDBOper {
             pSt.setString(1, s.getTitle());
             pSt.setString(2, s.getDescription());
             pSt.setInt(3, fkuser);
+
 
             int rowsInserted = pSt.executeUpdate();
 
@@ -51,13 +51,14 @@ public class JobsDBOper {
             ej.setId(rs.getInt("id"));
             ej.setTitle(rs.getString("title"));
             ej.setDescription(rs.getString("description"));
-            listofNames.add(ej);
+            listofJobs.add(ej);
         }
 
         pSt.close();
         conn.close();
 
-        return listofNames;
+
+        return listofJobs;
     }
 
     public List getAllJobsFilter(String title, String description) throws ClassNotFoundException, SQLException{
@@ -72,7 +73,7 @@ public class JobsDBOper {
         }
 
         if(title.equals("") && description.equals(""))
-            return listofNames;
+            return listofJobs;
 
         String query = "SELECT * FROM jobs WHERE title like '%" + title + "%' and  description like '%" + description + "%' ORDER BY data_add desc";
         Connection conn = DriverManager.getConnection(DBOper.URL, DBOper.USERNAME, DBOper.PASSWORD);
@@ -85,33 +86,25 @@ public class JobsDBOper {
             ej.setId(rs.getInt("id"));
             ej.setTitle(rs.getString("title"));
             ej.setDescription(rs.getString("description"));
-            listofNames.add(ej);
+            listofJobs.add(ej);
         }
 
         s.close();
         conn.close();
 
-        return listofNames;
+        return listofJobs;
     }
     public static void demoDelete(long id) throws ClassNotFoundException, SQLException {
 
-        // 1. load driver, no longer needed in new versions of JDBC
         Class.forName("org.postgresql.Driver");
 
-
-
-        // 3. obtain a connection
         Connection conn = DriverManager.getConnection(DBOper.URL, DBOper.USERNAME, DBOper.PASSWORD);
 
-        // 4. create a query statement
         PreparedStatement pSt = conn.prepareStatement("DELETE FROM jobs WHERE id=?");
         pSt.setLong(1,id);
 
-
-        // 5. execute a prepared statement
         int rowsDeleted = pSt.executeUpdate();
         System.out.println(rowsDeleted + " rows were deleted.");
-        // 6. close the objects
         pSt.close();
         conn.close();
     }

@@ -12,7 +12,6 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 
 
-
 @WebServlet("/tl")
 public class JSON extends HttpServlet {
 
@@ -34,20 +33,20 @@ public class JSON extends HttpServlet {
 
 
     private void read(HttpServletRequest req, HttpServletResponse resp) {
-        //JobsDBOper listQA = JobsDBOper.getInstance();
-        JobsDBOper listQA = new JobsDBOper();
+        //JobsDBOper listJob = JobsDBOper.getInstance();
+        JobsDBOper listJob = new JobsDBOper();
 
-        int iduser=-1;
+        int iduser = -1;
 
         HttpSession s = req.getSession();
         Object o = s.getAttribute("userid");
-        if(o!=null){
-            iduser=(Integer)o;
+        if (o != null) {
+            iduser = (Integer) o;
         }
 
         JSONObject json = new JSONObject();
         try {
-            json.put("myjobs", listQA.getMyJobs(iduser));
+            json.put("myjobs", listJob.getMyJobs(iduser));
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -64,16 +63,15 @@ public class JSON extends HttpServlet {
         ej.setTitle(title);
         ej.setDescription(description);
 
-
-        int fkuser=-1;
+        int fkuser = -1;
 
         HttpSession s = req.getSession();
         Object o = s.getAttribute("userid");
-        if(o!=null){
-            fkuser=(Integer)o;
+        if (o != null) {
+            fkuser = (Integer) o;
         }
 
-        if(fkuser!=-1) {
+        if (fkuser != -1) {
 
             JobsDBOper listOfNames = new JobsDBOper();
             try {
@@ -86,6 +84,7 @@ public class JSON extends HttpServlet {
         }
 
     }
+
     private void delete(HttpServletRequest req, HttpServletResponse resp) {
 
         System.out.println("enter pe done");

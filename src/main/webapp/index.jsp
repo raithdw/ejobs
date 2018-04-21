@@ -125,16 +125,14 @@
             var taskHtml =
                 '<ul>'+ '<a href="details.jsp?title=' + task.title + '&description='+ task.description + '"target="_blank"style="color: white">'+task.title+'</a>'+'</br>'+'</ul>'
                 + "<td><a href='tl?action=delete&id="+task.id+"'style=\"color: white\"><img src=https://cdn3.iconfinder.com/data/icons/line/36/trash_can-512.png title=delete></a></td>";
+
             listHtml += taskHtml;
         }
         list.innerHTML = listHtml;
 
-
     }
 
     loadToDo();
-
-
 
     function addNewToDo() {          //trimitem data_add
         var title = document.getElementById('title').value;
@@ -155,17 +153,6 @@
             var fieldsDiv = document.getElementById("sendSomething");
             fieldsDiv.appendChild(alertDiv);
         }
-    }
-
-    function markDone(id) {
-
-
-        $.ajax({
-            url: 'tl?action=markdone&id=' + id
-        }).done(function (response) {
-            location.href = "index.jsp";
-        });
-
 
     }
 </script>
