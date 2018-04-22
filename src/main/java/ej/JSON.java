@@ -94,7 +94,7 @@ public class JSON extends HttpServlet {
         String idS = req.getParameter("id");
         int id = Integer.parseInt(idS);
         try {
-            JobsDBOper.demoDelete(id);
+            JobsDBOper.deleteJobs(id);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

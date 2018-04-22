@@ -94,7 +94,7 @@ public class JobsDBOper {
 
         return listofJobs;
     }
-    public static void demoDelete(long id) throws ClassNotFoundException, SQLException {
+    public static void deleteJobs(long id) throws ClassNotFoundException, SQLException {
 
         Class.forName("org.postgresql.Driver");
 

@@ -41,6 +41,7 @@ public class RegisterServlet extends HttpServlet {
             session.removeAttribute("userid");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(back);
             dispatcher.forward(request, response);
+
         }
 
     }

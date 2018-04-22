@@ -126,6 +126,7 @@
                 '<ul>'+ '<a href="details.jsp?title=' + task.title + '&description='+ task.description + '"target="_blank"style="color: white">'+task.title+'</a>'+'</br>'+'</ul>'
                 + "<td><a href='tl?action=delete&id="+task.id+"'style=\"color: white\"><img src=https://cdn3.iconfinder.com/data/icons/line/36/trash_can-512.png title=delete></a></td>";
 
+
             listHtml += taskHtml;
         }
         list.innerHTML = listHtml;
