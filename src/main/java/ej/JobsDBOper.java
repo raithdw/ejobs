@@ -46,13 +46,7 @@ public class JobsDBOper {
         PreparedStatement pSt = conn.prepareStatement("SELECT * FROM jobs where iduser=? order by data_add desc");
         pSt.setInt(1, iduser);
         ResultSet rs = pSt.executeQuery();
-        while(rs.next()) {
-            Job ej = new Job();
-            ej.setId(rs.getInt("id"));
-            ej.setTitle(rs.getString("title"));
-            ej.setDescription(rs.getString("description"));
-            listofJobs.add(ej);
-        }
+        result(rs);
 
         pSt.close();
         conn.close();
@@ -79,15 +73,8 @@ public class JobsDBOper {
         Connection conn = DriverManager.getConnection(DBOper.URL, DBOper.USERNAME, DBOper.PASSWORD);
         Statement s = conn.createStatement();
 
-        //PreparedStatement pSt = conn.prepareStatement("SELECT * FROM jobs  order by data_add desc");
         ResultSet rs = s.executeQuery(query);
-        while(rs.next()) {
-            Job ej = new Job();
-            ej.setId(rs.getInt("id"));
-            ej.setTitle(rs.getString("title"));
-            ej.setDescription(rs.getString("description"));
-            listofJobs.add(ej);
-        }
+        result(rs);
 
         s.close();
         conn.close();
@@ -107,6 +94,15 @@ public class JobsDBOper {
         System.out.println(rowsDeleted + " rows were deleted.");
         pSt.close();
         conn.close();
+    }
+    private void result(ResultSet rs)throws ClassNotFoundException, SQLException{
+        while(rs.next()) {
+            Job ej = new Job();
+            ej.setId(rs.getInt("id"));
+            ej.setTitle(rs.getString("title"));
+            ej.setDescription(rs.getString("description"));
+            listofJobs.add(ej);
+        }
     }
 
 

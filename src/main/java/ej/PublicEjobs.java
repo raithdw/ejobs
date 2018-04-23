@@ -24,8 +24,6 @@ public class PublicEjobs extends HttpServlet {
 
     }
 
-
-
     private void read(HttpServletRequest req, HttpServletResponse resp) {
         //JobsDBOper listQA = JobsDBOper.getInstance();
         JobsDBOper jobs = new JobsDBOper();
@@ -43,7 +41,6 @@ public class PublicEjobs extends HttpServlet {
         }
         returnJsonResponse(resp, json.toString());
     }
-
 
     private void returnJsonResponse(HttpServletResponse response, String jsonResponse) {
         response.setContentType("application/json");

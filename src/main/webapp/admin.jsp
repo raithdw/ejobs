@@ -143,7 +143,7 @@
             $.ajax({
                 url: 'tl?action=write&title=' + title +'&description='+ description
             }).done(function (response) {
-                location.href = "index.jsp";
+                location.href = "admin.jsp";
             });
         }
         else {

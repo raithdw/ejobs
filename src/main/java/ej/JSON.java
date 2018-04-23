@@ -28,12 +28,9 @@ public class JSON extends HttpServlet {
         else if (action != null && action.equals("delete"))
             delete(req, resp);
 
-
     }
 
-
     private void read(HttpServletRequest req, HttpServletResponse resp) {
-        //JobsDBOper listJob = JobsDBOper.getInstance();
         JobsDBOper listJob = new JobsDBOper();
 
         int iduser = -1;
@@ -101,18 +98,14 @@ public class JSON extends HttpServlet {
             e.printStackTrace();
         }
         try {
-            resp.sendRedirect("index.jsp");
+            resp.sendRedirect("admin.jsp");
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        ToDoListDBAccess atl = new ToDoListDBAccess();
-//        atl.markDone(id);
-
-
         System.out.println("i am done");
     }
 
-    private void returnJsonResponse(HttpServletResponse response, String jsonResponse) {
+    protected void returnJsonResponse(HttpServletResponse response, String jsonResponse) {
         response.setContentType("application/json");
         PrintWriter pr = null;
         try {

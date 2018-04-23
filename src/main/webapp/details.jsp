@@ -25,6 +25,13 @@
         text-shadow: 2px 2px 4px #000000;
         color: mediumpurple;
     }
+    .titledesc{
+        font-size: 35px;
+        font-family: Cambria;
+        text-align: center;
+        font-weight: bold;
+        color: #3D0C02;
+    }
     h1{
         font-size: 40px;
         font-family: Cambria;
@@ -39,13 +46,12 @@
 </head>
 <body>
 <div class="title">
-    <p>
-        Job Title:
-        <br>
-        <%=request.getParameter("title")%>
-
+    Job Title:
+    <br>
 </div>
-<br>
+<div class="titledesc">
+    <%=request.getParameter("title")%>
+</div>
 <br>
     <h1>
         Job Description:
@@ -54,7 +60,6 @@
 <div class="descrip">
     <%=request.getParameter("description")%>
 </div>
-
 
 
 </body>

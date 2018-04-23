@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("userid", value);
             System.out.println("LoginServlet: bravoooo  ");
 
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("admin.jsp");
 
         }
         else

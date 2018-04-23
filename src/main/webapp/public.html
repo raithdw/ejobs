@@ -29,6 +29,7 @@
             url: 'publicEjobs?action=read&title='+ title +'&description='+ description
         }).done(function (response) {
             putToDoInHTML(response.ejobs);
+
         });
     }
 
@@ -55,8 +56,6 @@
     }
     loadToDo();
     </script>
-
-
 
 </body>
 </html>
