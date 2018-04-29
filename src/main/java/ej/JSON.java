@@ -105,7 +105,7 @@ public class JSON extends HttpServlet {
         System.out.println("i am done");
     }
 
-    protected void returnJsonResponse(HttpServletResponse response, String jsonResponse) {
+    private void returnJsonResponse(HttpServletResponse response, String jsonResponse) {
         response.setContentType("application/json");
         PrintWriter pr = null;
         try {

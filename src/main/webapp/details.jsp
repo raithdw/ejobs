@@ -16,6 +16,7 @@
         font-size: 30px;
         font-family: sans-serif;
         color: #3D0C02;
+        text-align: left;
     }
     .title{
         font-size: 50px;
@@ -31,6 +32,7 @@
         text-align: center;
         font-weight: bold;
         color: #3D0C02;
+
     }
     h1{
         font-size: 40px;
@@ -58,7 +60,7 @@
     </h1>
 
 <div class="descrip">
-    <%=request.getParameter("description")%>
+   <%=request.getParameter("description")%>
 </div>
 
 
